@@ -1,0 +1,73 @@
+
+<ion-navbar *navbar>
+  <ion-title>
+    Contact
+  </ion-title>
+</ion-navbar>
+
+<ion-content>
+  <!--
+  <ion-list>
+    <ion-list-header class="contact-page-content">Follow us on Twitter</ion-list-header>
+    <ion-item>
+      <ion-icon name="ionic" item-left class="contact-page-content"></ion-icon>
+      @ionicframework
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ionitron" item-left class="contact-page-content"></ion-icon>
+      @ionitron
+    </ion-item>
+  </ion-list>
+-->
+<p *ngIf="submitAttempt" style="color: #ea6153">Please fill out the form</p>
+<ion-list no-lines>
+  <form [ngFormModel]="slideOneForm">
+      <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input #firstName (change)="elementChanged(firstName)"
+          ngControl="firstName" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input #lastName (change)="elementChanged(lastName)"
+                ngControl="lastName" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+              <ion-label floating>Age:</ion-label>
+              <ion-input #age (change)="elementChanged(age)"
+                ngControl="age" type="number"></ion-input>
+      </ion-item>
+  </form>
+</ion-list>
+
+<br />        <ion-list no-lines>
+
+            <form [ngFormModel]="slideTwoForm">
+
+                <ion-item>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input #username (change)="elementChanged(username)" ngControl="username" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>Privacy</ion-label>
+                    <ion-select #privacy (change)="elementChanged(privacy)" ngControl="privacy">
+                        <ion-option value="public" checked="true">Public</ion-option>
+                        <ion-option value="friends">Friends Only</ion-option>
+                        <ion-option value="private">Private</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>Bio</ion-label>
+                    <ion-textarea ngControl="bio"></ion-textarea>
+                </ion-item>
+
+            </form>
+
+        </ion-list>
+
+        <button primary (click)="save()">Create Account!</button>
+
+
+</ion-content>

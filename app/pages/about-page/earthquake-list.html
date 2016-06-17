@@ -1,0 +1,26 @@
+
+<ion-navbar *navbar>
+  <ion-title>
+    Earthquakes
+  </ion-title>
+</ion-navbar>
+
+<ion-content padding>
+  <h4>Earthquakes around the world magnitude 2+ in the last 2 days.</h4>
+  <a href="#" (click)="viewSaved()">View Saved Earthquakes</a>
+  | <a href="#" (click)="getEarthquakeList()">Refresh</a>
+
+  <ion-card *ngFor = "let item of earthquakes" >
+      <ion-card-header>
+        Magnitude : {{item.properties.mag}}
+      </ion-card-header>
+      <ion-card-content>
+          <b>Place:</b> {{item.properties.place}}
+          <b>time:</b> {{item.properties.time | date: 'medium'}}
+          <p><a target="_blank" href="{{item.properties.url}}">Map it</a></p>
+          <ion-icon name="star" (click)="markToSave(item,$event)" item-left isActive="true"></ion-icon>
+          <!-- input type="checkbox" (click)="markToSave(item, $event)">Save -->
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>
